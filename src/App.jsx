@@ -116,41 +116,43 @@ function App() {
   return (
     <>
       <Header setQ={setQ} />
-      <div className="flex justify-end">
-        {/* Sort functionality */}
-        <select onChange={handleSortChange} className="p-2 border-2 m-1">
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              Sort by {option.label}
-            </option>
-          ))}
-        </select>
-        {/* Sort By */}
-        <select
-          onChange={(e) => setSortBy(e.target.value)}
-          className="p-2 border-2 m-1"
-        >
-          {SORT_BY_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              Sort by {option.label}
-            </option>
-          ))}
-        </select>
+      <div className="mx-12">
+        <div className="flex justify-end">
+          {/* Sort functionality */}
+          <select onChange={handleSortChange} className="p-2 border-2 m-1">
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                Sort by {option.label}
+              </option>
+            ))}
+          </select>
+          {/* Sort By */}
+          <select
+            onChange={(e) => setSortBy(e.target.value)}
+            className="p-2 border-2 m-1"
+          >
+            {SORT_BY_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                Sort by {option.label}
+              </option>
+            ))}
+          </select>
 
-        {/* Type Filter */}
+          {/* Type Filter */}
 
-        <select
-          onChange={(e) => setTypeFilter(e.target.value)}
-          className="p-2 border-2 m-1"
-        >
-          {TYPE.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+          <select
+            onChange={(e) => setTypeFilter(e.target.value)}
+            className="p-2 border-2 m-1"
+          >
+            {TYPE.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+        <PokemonList listData={listData} onLoadMore={fetchData} />
       </div>
-      <PokemonList listData={listData} onLoadMore={fetchData} />
     </>
   );
 }
