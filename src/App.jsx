@@ -87,15 +87,16 @@ function App() {
   const fetchData = async (nextUrl) => {
     let URL = API_URL;
 
-    if (q) {
-      URL += `?q=${q}`;
-    } else if (nextUrl) {
+    if (nextUrl) {
       URL = nextUrl;
+    } else {
+      if (q) {
+        URL += `?q=${q}`;
+      }
+      URL += q ? `&sort=${sort}` : `?sort=${sort}`;
+      URL += `&order=${sortBy}`;
+      URL += `&type=${typeFilter}`;
     }
-
-    URL += q ? `&sort=${sort}` : `?sort=${sort}`;
-    URL += `&order=${sortBy}`;
-    URL += `&type=${typeFilter}`;
 
     const res = await axios.get(URL);
     setListData(res.data);
