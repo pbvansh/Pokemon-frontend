@@ -30,7 +30,7 @@ const PokemonList = ({ listData = [], onLoadMore }) => {
       </div>
       <div className="flex items-center justify-center">
         <button
-          onClick={onLoadMore}
+          onClick={() => onLoadMore(listData.next)}
           className="bg-[#F34D61] px-4 py-1 rounded-full text-white mb-5 cursor-pointer"
         >
           Load More
